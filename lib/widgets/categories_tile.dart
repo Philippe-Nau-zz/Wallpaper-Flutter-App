@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallpaper/controller/search_controller.dart';
@@ -31,14 +33,20 @@ class CategoriesTile extends StatelessWidget {
               ),
               margin: EdgeInsets.symmetric(horizontal: 5),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  this.imgUrl,
-                  width: 100,
-                  height: 50,
-                  fit: BoxFit.cover,
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(8),
+                  child: kIsWeb
+                      ? Image.network(
+                          this.imgUrl,
+                          width: 100,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: this.imgUrl,
+                          width: 100,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        )),
             ),
             Container(
               child: Text(

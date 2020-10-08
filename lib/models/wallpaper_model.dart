@@ -1,5 +1,6 @@
 class WallpaperModel {
   String originalUrl;
+  String mediumUrl;
 
-  WallpaperModel({this.originalUrl});
+  WallpaperModel({this.originalUrl, this.mediumUrl});
 }

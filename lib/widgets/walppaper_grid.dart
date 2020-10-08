@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallpaper/models/wallpaper_model.dart';
 
 class WallpaperGrid extends StatelessWidget {
-  final List items;
+  final List<WallpaperModel> items;
   WallpaperGrid({@required this.items});
   @override
   Widget build(BuildContext context) {
@@ -28,24 +28,18 @@ class WallpaperGrid extends StatelessWidget {
             ),
             child: GestureDetector(
               onTap: () {
-                Get.toNamed('/imageview', arguments: this.items[index]);
+                Get.toNamed('/imageview',
+                    arguments: this.items[index].originalUrl);
               },
               child: Hero(
-                tag: this.items[index],
+                tag: this.items[index].originalUrl,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: kIsWeb
-                        ? Image.network(
-                            this.items[index],
-                            fit: BoxFit.cover,
-                          )
-                        : CachedNetworkImage(
-                            imageUrl: this.items[index],
-                            placeholder: (context, url) => Container(
-                              color: Color(0xfff5f8fd),
-                            ),
-                            fit: BoxFit.cover,
-                          )),
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(
+                    this.items[index].mediumUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ),

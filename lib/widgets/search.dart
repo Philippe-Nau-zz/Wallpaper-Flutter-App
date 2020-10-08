@@ -18,26 +18,27 @@ class Search extends StatelessWidget {
           Expanded(
             child: TextField(
               controller: _controller.searchController,
-              focusNode: _controller.searchFocusNode,
               decoration: InputDecoration(
                 hintText: 'Search Wallpaper',
                 border: InputBorder.none,
               ),
+              onSubmitted: (_) {
+                if (_controller.searchController.text.isNotEmpty) {
+                  _controller
+                      .searchWallPapers(_controller.searchController.text);
+                  _controller.searchController.clear();
+                  Get.toNamed('/search');
+                }
+              },
             ),
           ),
           GestureDetector(
-            onTap: () => {
-              if (_controller.searchController.text.isNotEmpty)
-                {
-                  _controller
-                      .searchWallPapers(_controller.searchController.text),
-                  _controller.searchController.clear(),
-                  Get.toNamed('/search'),
-                }
-              else
-                {
-                  _controller.searchFocusNode.requestFocus(),
-                }
+            onTap: () {
+              if (_controller.searchController.text.isNotEmpty) {
+                _controller.searchWallPapers(_controller.searchController.text);
+                _controller.searchController.clear();
+                Get.toNamed('/search');
+              }
             },
             child: Icon(Icons.search),
           ),

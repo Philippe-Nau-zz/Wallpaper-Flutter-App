@@ -22,7 +22,7 @@ class HomePage extends GetView<HomeController> {
             children: [
               Search(),
               SizedBox(height: 16),
-              GetX<HomeController>(
+              GetBuilder<HomeController>(
                 init: HomeController(),
                 builder: (_) => Column(
                   children: [

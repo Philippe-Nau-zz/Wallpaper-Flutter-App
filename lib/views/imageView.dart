@@ -36,11 +36,13 @@ class ImageView extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          kIsWeb
-                              ? _imageViewController
-                                  .launchUrl(_imageViewController.imageUrl)
-                              : _imageViewController
-                                  .saveImage(_imageViewController.imageUrl);
+                          if (kIsWeb) {
+                            _imageViewController
+                                .launchUrl(_imageViewController.imageUrl);
+                          } else {
+                            _imageViewController
+                                .saveImage(_imageViewController.imageUrl);
+                          }
                         },
                         child: Container(
                           margin: EdgeInsets.only(bottom: 25),
@@ -101,11 +103,13 @@ class ImageView extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          kIsWeb
-                              ? _imageViewController
-                                  .launchUrl(_imageViewController.imageUrl)
-                              : _imageViewController
-                                  .saveImage(_imageViewController.imageUrl);
+                          if (kIsWeb) {
+                            _imageViewController
+                                .launchUrl(_imageViewController.imageUrl);
+                          } else {
+                            _imageViewController
+                                .saveImage(_imageViewController.imageUrl);
+                          }
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),

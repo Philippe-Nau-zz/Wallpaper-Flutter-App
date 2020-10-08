@@ -39,8 +39,6 @@ class ImageViewController extends GetxController {
     if (await canLaunch(url)) {
       await launch(
         url,
-        forceSafariVC: false,
-        forceWebView: false,
         headers: <String, String>{
           'Authorization': Constants.API_KEY,
         },

@@ -22,7 +22,7 @@ class SearchPage extends GetView<SearchController> {
             children: [
               Search(),
               SizedBox(height: 16),
-              GetX<SearchController>(
+              GetBuilder<SearchController>(
                 init: SearchController(),
                 builder: (_) => WallpaperGrid(items: _.searchWallpapers),
               ),
