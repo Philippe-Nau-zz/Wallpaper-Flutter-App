@@ -38,6 +38,7 @@ class WallpaperGrid extends StatelessWidget {
                   child: Image.network(
                     this.items[index].mediumUrl,
                     fit: BoxFit.cover,
+                    //sdd
                   ),
                 ),
               ),
