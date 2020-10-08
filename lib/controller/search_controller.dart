@@ -23,7 +23,7 @@ class SearchController extends GetxController {
       data['photos'].forEach((element) {
         _searchWallpapers.add(
           WallpaperModel(
-            originalUrl: element['src']['original'],
+            largeUrl: element['src']['large'],
             mediumUrl: element['src']['medium'],
           ),
         );

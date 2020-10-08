@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:wallpaper/controller/search_controller.dart';
 import 'package:wallpaper/widgets/brand.dart';
 import 'package:wallpaper/widgets/search.dart';
-import 'package:wallpaper/widgets/walppaper_grid.dart';
+import 'package:wallpaper/widgets/wallpaper_grid.dart';
 
 class SearchPage extends GetView<SearchController> {
   @override
@@ -24,7 +24,9 @@ class SearchPage extends GetView<SearchController> {
               SizedBox(height: 16),
               GetBuilder<SearchController>(
                 init: SearchController(),
-                builder: (_) => WallpaperGrid(items: _.searchWallpapers),
+                builder: (_) => WallpaperGrid(
+                  items: _.searchWallpapers,
+                ),
               ),
             ],
           ),

@@ -26,7 +26,7 @@ class HomeController extends GetxController {
       Map<String, dynamic> data = jsonDecode(response.body);
       data['photos'].forEach((element) {
         _wallpapers.add(WallpaperModel(
-          originalUrl: element['src']['original'],
+          largeUrl: element['src']['large'],
           mediumUrl: element['src']['medium'],
         ));
       });

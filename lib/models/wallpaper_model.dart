@@ -1,6 +1,6 @@
 class WallpaperModel {
-  String originalUrl;
+  String largeUrl;
   String mediumUrl;
 
-  WallpaperModel({this.originalUrl, this.mediumUrl});
+  WallpaperModel({this.largeUrl, this.mediumUrl});
 }

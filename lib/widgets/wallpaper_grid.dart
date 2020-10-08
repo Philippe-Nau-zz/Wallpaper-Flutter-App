@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:wallpaper/models/wallpaper_model.dart';
 
@@ -10,16 +11,15 @@ class WallpaperGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      child: GridView.builder(
+      child: StaggeredGridView.countBuilder(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.6,
-          crossAxisSpacing: 6,
-          mainAxisSpacing: 6,
-        ),
+        staggeredTileBuilder: (index) =>
+            StaggeredTile.count(2, index.isEven ? 3 : 4),
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
         itemCount: this.items.length,
+        crossAxisCount: 4,
         itemBuilder: (context, index) => GridTile(
           child: Container(
             decoration: BoxDecoration(
@@ -29,16 +29,15 @@ class WallpaperGrid extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Get.toNamed('/imageview',
-                    arguments: this.items[index].originalUrl);
+                    arguments: this.items[index].largeUrl);
               },
               child: Hero(
-                tag: this.items[index].originalUrl,
+                tag: this.items[index].largeUrl,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.network(
                     this.items[index].mediumUrl,
                     fit: BoxFit.cover,
-                    //sdd
                   ),
                 ),
               ),

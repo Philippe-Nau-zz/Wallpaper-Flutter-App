@@ -4,7 +4,7 @@ import 'package:wallpaper/controller/home_controller.dart';
 import 'package:wallpaper/widgets/brand.dart';
 import 'package:wallpaper/widgets/listview_categories.dart';
 import 'package:wallpaper/widgets/search.dart';
-import 'package:wallpaper/widgets/walppaper_grid.dart';
+import 'package:wallpaper/widgets/wallpaper_grid.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
