@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wallpaper/pages/pages.dart';
 import 'package:wallpaper/routes/route.dart';
 import 'package:wallpaper/views/home_page.dart';
+import 'package:wallpaper/views/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Wallpaper Flutter',
       getPages: AppPages.pages,
       initialRoute: Routes.INITIAL,
-      home: HomePage(),
+      home: SplashScreenApp(),
     );
   }
 }
