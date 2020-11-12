@@ -13,13 +13,19 @@ class HomeController extends GetxController {
   final List<WallpaperModel> _wallpapers = [];
   List<WallpaperModel> get wallpapers => _wallpapers;
 
+  String _moreImage = '';
+  String get moreImage => _moreImage;
+  String _baseUrl =
+      'https://api.pexels.com/v1/curated/?page=1\u0026per_page=11';
+  String get baseUrl => _baseUrl;
+
   onInit() {
-    getWallPapers();
+    getWallPapers(baseUrl);
     super.onInit();
   }
 
-  Future getWallPapers() async {
-    var response = await http.get(Constants.CURATED_URL, headers: {
+  Future getWallPapers(String url) async {
+    var response = await http.get(url, headers: {
       'Authorization': Constants.API_KEY,
     });
     if (response.statusCode == 200) {
@@ -31,8 +37,14 @@ class HomeController extends GetxController {
         ));
       });
       update();
+      setPage(data["next_page"]);
     } else {
       print('error');
     }
+  }
+
+  setPage(String nextUrl) {
+    _moreImage = nextUrl;
+    update();
   }
 }
